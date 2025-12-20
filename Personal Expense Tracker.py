@@ -2,10 +2,15 @@ import json
 def save(data_to_save):
     with open("saving_data.json", "w") as f:
         json.dump({"saving_data.json": data_to_save}, f)
+
 def load():
-    with open("saving_data.json", "r") as f:
-        return json.load(f).get("saving_data.json", [])
-my_expenses = []
+    try:
+        with open("saving_data.json", "r") as f:
+            return json.load(f).get("saving_data.json", [])
+    except FileNotFoundError:
+            return []
+
+my_expenses = load()
 
 def input_for_expenses ():
     product_bought = input("Enter the product you bought ")
