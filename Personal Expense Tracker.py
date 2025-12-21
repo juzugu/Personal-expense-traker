@@ -1,8 +1,11 @@
 import json
+
+# Function to save data to json file
 def save(data_to_save):
     with open("saving_data.json", "w") as f:
         json.dump({"saving_data.json": data_to_save}, f)
 
+# Function to load data from json file
 def load():
     try:
         with open("saving_data.json", "r") as f:
@@ -10,14 +13,24 @@ def load():
     except FileNotFoundError:
             return []
     
-budget = int(input("Enter your budget for this "))
+# Function to check for valid number input 
+def check_input_number(user_prompt):
+    while True:
+        try:
+            value = float(input(user_prompt))
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+budget = check_input_number("Enter your budget for this ")
 
 my_expenses = load()
 
 def input_for_expenses ():
     product_bought = input("Enter the product you bought ")
-    quantity = int(input("Enter the quantity bought if "))
-    price = int(input("Enter the item price "))
+    quantity = check_input_number("Enter the quantity bought if ")
+    quantity = int(quantity)
+    price = check_input_number("Enter the item price ")
     return product_bought, quantity, price
 while True:
     product_bought, quantity, price = input_for_expenses()
@@ -25,9 +38,11 @@ while True:
     want_to_continue = input("Do you want to continue? yes/no ")
     if want_to_continue.strip().lower() == "no":
         break
+for index, expense in enumerate(my_expenses):
+    print(f"{index}. {expense['product']}")
 delete = input("Do you want to delete any item? yes/no ")
 if delete.strip().lower() == "yes":
-    index_to_delete = int(input("Enter the number of the item to delete "))
+    index_to_delete = float(input("Enter the number of the item to delete "))
     if 0 <= index_to_delete and index_to_delete < len(my_expenses):
         my_expenses.pop(index_to_delete)
     else:
