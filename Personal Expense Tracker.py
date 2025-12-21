@@ -74,21 +74,25 @@ def calculate_expenses_start():
         print(f"You are within the budget. You have {budget - total_expense} remaining")
     print(f"total expense is {total_expense}")
     save(my_expenses)
-    
+
 # Main menu 
 while True:
     print("menu options")
-    print("1. Add expenses")
-    print("2. Delete expenses")
-    print("4. Exit")
-    user_choise = input("Enter your choice (1/2/3): ")
+    print("1.change budget")
+    print("2. Add expenses")
+    print("3. Delete expenses")
+    print("4. Calculate expenses")
+    print("5. Exit")
+    user_choise = input("Enter your choice ")
     if user_choise == "1":
-        add_expenses()
+        budget = check_input_number("Enter your budget")
     elif user_choise == "2":
-        delete_expenses()
+        add_expenses()
     elif user_choise == "3":
-        calculate_expenses_start()
+        delete_expenses()
     elif user_choise == "4":
+        calculate_expenses_start()
+    elif user_choise == "5":
         save(my_expenses)
         break
 
