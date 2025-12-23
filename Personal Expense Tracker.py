@@ -43,14 +43,14 @@ def add_expenses(my_expenses, budget):
             break
 
 #2 Function to delete expenses
-def delete_expenses(my_expenses=[], budget=0):
+def delete_expenses(my_expenses, budget):
     while True:
         for index, expense in enumerate(my_expenses):
-            print(f"{index}. {expense['product']}")
+            print(f"{index+1}. {expense['product']}")
         delete = input("Do you want to delete any item? yes/no ")
         if delete.strip().lower() == "yes":
             index_to_delete = check_input_number("Enter the number of the item to delete ")
-            index_to_delete = int(index_to_delete)
+            index_to_delete = int(index_to_delete) - 1
             if 0 <= index_to_delete and index_to_delete < len(my_expenses):
                 my_expenses.pop(index_to_delete)
             else:
@@ -67,7 +67,7 @@ def calculate_expenses_start(my_expenses,budget):
     for index, expense in enumerate(my_expenses):
         expense_vault = expense["quantity"] * expense["price"]
         total_expense = total_expense + expense_vault
-        print(f"the expense for {index} {expense['product']} is {expense_vault}")
+        print(f"the expense for f{index} {expense['product']} is {expense_vault}")
     if total_expense > budget:
         print(f"You have exceeded your budget of {budget} for {total_expense - budget}")
     else:
