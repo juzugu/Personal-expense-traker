@@ -11,8 +11,8 @@ def load():
         with open("saving_data.json", "r") as f:
             data = json.load(f)
             return data.get("saving_data.json", []), data.get("budget", 0)
-    except FileNotFoundError:
-            return [], 0
+    except (FileNotFoundError, json.JSONDecodeError):
+        return [], 0
     
 # Function to check for valid number input 
 def check_input_number(user_prompt):
@@ -67,7 +67,7 @@ def calculate_expenses_start(my_expenses,budget):
     for index, expense in enumerate(my_expenses):
         expense_vault = expense["quantity"] * expense["price"]
         total_expense = total_expense + expense_vault
-        print(f"the expense for f{index} {expense['product']} is {expense_vault}")
+        print(f"the expense for {index} {expense['product']} is {expense_vault}")
     if total_expense > budget:
         print(f"You have exceeded your budget of {budget} for {total_expense - budget}")
     else:
