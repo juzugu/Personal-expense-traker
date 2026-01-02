@@ -8,7 +8,19 @@
 <body>
     <h1>Personal Expense Tracker</h1>
     <p>Track your expenses easily and efficiently.</p>
+    <form method="post" action="/add">
+        <input type="text" name="product" placeholder="Enter your product" required>
+        <input type="number" name="price" placeholder="Enter the price" required>
+        <input type="number" name="quantity" placeholder="Enter your quantity" required>
+        <button type="submit">Add Expense</button>
+    </form>
     <p>My budget is {{budget}}</p>
+    <h2>My Expenses</h2>
+        <ul>
+            {% for expense in expenses %}
+                <li> {{ expense.product }} - ${{ expense.price }} </li>
+                    {% endfor %}
+        </ul>
     
 </body>
 </html>

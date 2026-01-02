@@ -18,7 +18,7 @@ def load():
 @app.route('/')
 def home():
     my_expenses, budget = load()
-    return render_template("index.html", budget=budget)
+    return render_template("index.html", budget=budget, expenses=my_expenses)
     
 
 if __name__ == '__main__':
