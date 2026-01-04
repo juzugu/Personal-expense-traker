@@ -1,5 +1,5 @@
 import json
-from flask import Flask,render_template
+from flask import Flask, redirect,render_template,request, url_for
 
 app = Flask(__name__)
 # Function to save data to json file
@@ -19,7 +19,14 @@ def load():
 def home():
     my_expenses, budget = load()
     return render_template("index.html", budget=budget, expenses=my_expenses)
-    
-
+@app.route('/add', methods=['POST'])
+def add_expenses():
+    my_expenses, budget = load()
+    product = request.form.get('product')
+    price = float(request.form.get('price'))
+    quantity = int(request.form.get('quantity'))
+    my_expenses.append({"product": product, "quantity": quantity, "price": price})
+    save(my_expenses, budget)
+    return redirect(url_for('home'))
 if __name__ == '__main__':
     app.run(debug=True)
