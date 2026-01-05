@@ -1,0 +1,29 @@
+body {
+    background-color: #c2c2d6; 
+    font-family: sans-serif;   
+}
+
+.container {
+    max-width: 600px;      
+    margin: 50px auto;     
+    background: white; 
+    padding: 20px;       
+    border-radius: 8px;  
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.btn-add {
+    width: 50%;    
+    display: block;   
+    margin: 10px auto;  
+    background-color: #02af2a; 
+    color: white;        
+    border: none;         
+    padding: 12px;        
+    cursor: pointer;      
+    font-weight: bold;    
+    transition: background 0.3s; 
+}
+.btn-add:hover {
+    background-color: #01440f;
+}

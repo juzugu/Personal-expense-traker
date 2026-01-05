@@ -15,6 +15,17 @@ def load():
             return data.get("saving_data.json", []), data.get("budget", 0)
     except (FileNotFoundError, json.JSONDecodeError):
         return [], 0
+
+@app.route('/delete/<int:index>')
+def delete_expense(index):
+    my_expenses, budget = load()
+    try:
+        my_expenses.pop(index)
+        save(my_expenses, budget)
+        return redirect(url_for('home'))
+    except IndexError:
+        return redirect(url_for('home'))
+    
 @app.route('/')
 def home():
     my_expenses, budget = load()

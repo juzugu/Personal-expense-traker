@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Document</title>
 </head>
 <body>
-    <h1>Personal Expense Tracker</h1>
-    <p>Track your expenses easily and efficiently.</p>
-    <form method="post" action="/add">
-        <input type="text" name="product" placeholder="Enter your product" required>
-        <input type="number" name="price" placeholder="Enter the price" required>
-        <input type="number" name="quantity" placeholder="Enter your quantity" required>
-        <button type="submit">Add Expense</button>
-    </form>
-    <p>My budget is {{budget}}</p>
-    <h2>My Expenses</h2>
-        <ul>
-            {% for expense in expenses %}
-                <li> {{ expense.product }} - ${{ expense.price }} </li>
-                    {% endfor %}
+    <div class="container">
+        <h1>Personal Expense Tracker</h1>
+        <p>Track your expenses easily and efficiently.</p>
+        <form method="post" action="/add">
+            <input type="text" name="product" placeholder="Enter your product" required>
+            <input type="number" name="price" placeholder="Enter the price" required>
+            <input type="number" name="quantity" placeholder="Enter your quantity" required>
+            <button type="submit" class="btn-add">Add Expense</button>
+        </form>
+        <p>My budget is {{budget}}</p>
+        <h2>My Expenses</h2>
+            <ul>
+                {% for expense in expenses %}
+                    <li> {{ expense.product }} - ${{ expense.price }} <a href="{{ url_for('delete_expense', index=loop.index0) }}">Delete</a></li>
+                        {% endfor %}
         </ul>
-    
+    </div>
 </body>
 </html>
