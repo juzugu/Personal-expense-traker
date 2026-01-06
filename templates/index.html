@@ -20,7 +20,7 @@
         <h2>My Expenses</h2>
             <ul>
                 {% for expense in expenses %}
-                    <li> {{ expense.product }} - ${{ expense.price }} <a href="{{ url_for('delete_expense', index=loop.index0) }}">Delete</a></li>
+                    <li> <span class="product-n">{{ expense.product }}</span>  <span class="price">${{ expense.price }}</span><a href="{{ url_for('delete_expense', index=loop.index0) }}">Delete</a></li>
                         {% endfor %}
         </ul>
     </div>

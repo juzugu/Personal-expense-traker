@@ -27,3 +27,58 @@ body {
 .btn-add:hover {
     background-color: #01440f;
 }
+
+input {
+    /* Centering (Matches your button) */
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+
+    /* Styling */
+    padding: 12px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;     
+    font-size: 16px;        
+    background-color: #f9f9f9; 
+}
+
+
+input:focus {
+    border-color: #08581c;  
+    background-color: white; 
+    box-shadow: 0 0 5px rgb(6, 78, 17);
+}
+
+/* Clean up the main list container */
+ul {
+    list-style: none;     /* Remove the black dots */
+    padding: 0;           /* Remove default indentation */
+    margin-top: 20px;     /* Space between form and list */
+}
+
+/* Style each individual row */
+li {
+    background-color: white;
+    border-bottom: 1px solid #eee; /* Grey line at bottom */
+    padding: 15px;                 /* Breathe room */
+    
+    /* The Flexbox Magic */
+    display: flex;                 /* Activate Flex mode */
+    justify-content: space-between;/* Push Product Left, Button Right */
+    align-items: center;           /* Center them vertically */
+}
+
+li:last-child {
+    border-bottom: none;
+}
+.product-n {
+    font-weight: bold;   /* We still want it bold */
+    font-size: 18px;     /* Make it slightly bigger */
+    color: #f71717;         /* Dark grey instead of pure black */
+    text-transform: capitalize; /* BONUS: Forces "milk" to become "Milk" */
+}
+.price {
+    color: #a74c28;       
+    font-weight: bold;    
+    margin-left: 15px;    
+}
