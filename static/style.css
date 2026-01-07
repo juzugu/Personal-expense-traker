@@ -51,34 +51,41 @@ input:focus {
 
 /* Clean up the main list container */
 ul {
-    list-style: none;     /* Remove the black dots */
-    padding: 0;           /* Remove default indentation */
-    margin-top: 20px;     /* Space between form and list */
+    list-style: none;     
+    padding: 0;           
+    margin-top: 20px;     
 }
 
 /* Style each individual row */
 li {
     background-color: white;
-    border-bottom: 1px solid #eee; /* Grey line at bottom */
-    padding: 15px;                 /* Breathe room */
+    border-bottom: 1px solid #eee; 
+    padding: 15px;              
     
     /* The Flexbox Magic */
-    display: flex;                 /* Activate Flex mode */
-    justify-content: space-between;/* Push Product Left, Button Right */
-    align-items: center;           /* Center them vertically */
+    display: flex;                
+    justify-content: space-between;
+    align-items: center;          
 }
 
 li:last-child {
     border-bottom: none;
 }
 .product-n {
-    font-weight: bold;   /* We still want it bold */
-    font-size: 18px;     /* Make it slightly bigger */
-    color: #f71717;         /* Dark grey instead of pure black */
-    text-transform: capitalize; /* BONUS: Forces "milk" to become "Milk" */
+    font-weight: bold;   
+    font-size: 18px; 
+    color: #351515; 
+    text-transform: capitalize;
 }
 .price {
     color: #a74c28;       
     font-weight: bold;    
     margin-left: 15px;    
+}
+.total-price-box {
+    text-align: right;          
+    margin-top: 20px;           
+    padding-top: 10px;         
+    border-top: 2px solid #333; 
+    font-size: 20px;         
 }

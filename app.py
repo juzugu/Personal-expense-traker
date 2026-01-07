@@ -29,7 +29,14 @@ def delete_expense(index):
 @app.route('/')
 def home():
     my_expenses, budget = load()
-    return render_template("index.html", budget=budget, expenses=my_expenses)
+    total_cost = 0
+    for expense in my_expenses:
+        expense["quantity"] = int(expense["quantity"])
+        expense["price"] = float(expense["price"])
+        total_cost = total_cost + (expense["price"] * expense["quantity"])
+    print(f"Total cost of expenses: ${total_cost}")
+    money_left = float(budget) - total_cost
+    return render_template("index.html", budget=budget, expenses=my_expenses, total=total_cost, money_left=money_left, remaining=money_left)
 @app.route('/add', methods=['POST'])
 def add_expenses():
     my_expenses, budget = load()
@@ -41,3 +48,4 @@ def add_expenses():
     return redirect(url_for('home'))
 if __name__ == '__main__':
     app.run(debug=True)
+
