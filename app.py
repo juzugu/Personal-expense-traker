@@ -26,6 +26,22 @@ def delete_expense(index):
     except IndexError:
         return redirect(url_for('home'))
     
+@app.route('/edit/<int:index>', methods=['GET', 'POST'])
+def edit(index):
+    my_expenses, budget = load()
+    if index >= len(my_expenses): 
+        return "Error: This item does not exist!"
+    if request.method == 'POST':
+        my_expenses[index] = {
+            'product': request.form['product'],
+            'price': request.form['price'],
+            'quantity': request.form['quantity']
+        }
+        save(my_expenses, budget)
+        return redirect(url_for('home'))
+    expense_to_edit = my_expenses[index]
+    return render_template('edit.html', expense=expense_to_edit, index=index)
+
 @app.route('/')
 def home():
     my_expenses, budget = load()
