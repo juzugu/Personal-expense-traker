@@ -20,9 +20,20 @@
         <h2>My Expenses</h2>
             <ul>
                 {% for expense in expenses %}
-                    <li> <span class="product-n">{{ expense.product }}</span>  <span class="price">${{ expense.price }}</span><a href="{{ url_for('delete_expense', index=loop.index0) }}">Delete</a></li>
+                    <li>
+                        <span class="product-n">{{ expense.product }}</span>
+                        <span class="price">${{ expense.price }}</span>
+
+                        <a href="{{ url_for('edit', index=loop.index0) }}" class="btn-edit">Edit</a>
+
+                        <a href="{{ url_for('delete_expense', index=loop.index0) }}" 
+                        class="btn-delete" 
+                        onclick="return confirm('Sure?');">
+                        Delete
+                        </a>
+                    </li>
                         {% endfor %}
-                        <di class="total-box">
+                        <div class="total-box">
                             <p>Budget: ${{ budget }}</p>
                             <p>Total Spent: ${{ total }}</p>
                             <hr> <p><b>Remaining: ${{ remaining }}</b></p>
