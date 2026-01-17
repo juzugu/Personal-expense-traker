@@ -15,12 +15,14 @@
             <input type="number" name="price" placeholder="Enter the price" required>
             <input type="number" name="quantity" placeholder="Enter your quantity" required>
             <button type="submit" class="btn-add">Add Expense</button>
+            <label>Date:</label>
         </form>
         <p>My budget is {{budget}}</p>
         <h2>My Expenses</h2>
             <ul>
                 {% for expense in expenses %}
                     <li>
+                        <strong>{{ expense.get('date', '---') }}</strong>:
                         <span class="product-n">{{ expense.product }}</span>
                         <span class="price">${{ expense.price }}</span>
 

@@ -1,6 +1,6 @@
 import json
 from flask import Flask, redirect,render_template,request, url_for
-
+from datetime import date
 app = Flask(__name__)
 # Function to save data to json file
 def save(data_to_save, budget):
@@ -56,10 +56,11 @@ def home():
 @app.route('/add', methods=['POST'])
 def add_expenses():
     my_expenses, budget = load()
+    today_date = date.today().strftime('%Y-%m-%d')
     product = request.form.get('product')
     price = float(request.form.get('price'))
     quantity = int(request.form.get('quantity'))
-    my_expenses.append({"product": product, "quantity": quantity, "price": price})
+    my_expenses.append({"product": product, "quantity": quantity, "price": price, "date": today_date})
     save(my_expenses, budget)
     return redirect(url_for('home'))
 if __name__ == '__main__':
